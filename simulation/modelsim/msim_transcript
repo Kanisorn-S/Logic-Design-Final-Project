@@ -1,0 +1,175 @@
+# Reading D:/altera/13.0sp1/modelsim_ase/tcl/vsim/pref.tcl 
+# do integer_divider_run_msim_rtl_vhdl.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying D:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied D:\altera\13.0sp1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/components/mux.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux
+# -- Compiling architecture Behaviour of mux
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/my_components.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package my_components
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/components/is_zero.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Compiling entity is_zero
+# -- Compiling architecture Behaviour of is_zero
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/components/register.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity regne
+# -- Compiling architecture Behaviour of regne
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/components/adder.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity adder
+# -- Compiling architecture Behaviour of adder
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/components/full_adder.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture LogicFunc of full_adder
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/components/inverter.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity inverter
+# -- Compiling architecture Behaviour of inverter
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/integer_divider.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package my_components
+# -- Compiling entity integer_divider
+# -- Compiling architecture Behaviour of integer_divider
+# ** Warning: D:/altera/13.0sp1/final_project/integer_divider.vhd(69): (vcom-1074) Non-locally static OTHERS choice is allowed only if it is the only choice of the only association.
+# 
+# ** Warning: D:/altera/13.0sp1/final_project/integer_divider.vhd(76): Cannot associate port "Q" of mode OUT with port "R" of mode BUFFER.
+# ** Warning: D:/altera/13.0sp1/final_project/integer_divider.vhd(78): Cannot associate port "Q" of mode OUT with port "Q" of mode BUFFER.
+# 
+vcom -reportprogress 300 -work work D:/altera/13.0sp1/final_project/integer_divider_tb.vhd
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity divider_tb
+# -- Compiling architecture Behavior of divider_tb
+# -- Loading package my_components
+# -- Loading entity integer_divider
+vsim +altera -do integer_divider_run_msim_rtl_vhdl.do -l msim_transcript -gui work.divider_tb
+# vsim +altera -do integer_divider_run_msim_rtl_vhdl.do -l msim_transcript -gui work.divider_tb 
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.my_components
+# Loading work.divider_tb(behavior)
+# Loading work.integer_divider(behaviour)
+# Loading work.regne(behaviour)
+# Loading synopsys.attributes
+# Loading ieee.std_logic_misc(body)
+# Loading work.is_zero(behaviour)
+# Loading work.inverter(behaviour)
+# Loading work.adder(behaviour)
+# Loading work.full_adder(logicfunc)
+# Loading work.mux(behaviour)
+# do integer_divider_run_msim_rtl_vhdl.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/components/mux.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux
+# -- Compiling architecture Behaviour of mux
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/my_components.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package my_components
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/components/is_zero.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Compiling entity is_zero
+# -- Compiling architecture Behaviour of is_zero
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/components/register.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity regne
+# -- Compiling architecture Behaviour of regne
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/components/adder.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity adder
+# -- Compiling architecture Behaviour of adder
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/components/full_adder.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture LogicFunc of full_adder
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/components/inverter.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity inverter
+# -- Compiling architecture Behaviour of inverter
+# vcom -93 -work work {D:/altera/13.0sp1/final_project/integer_divider.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package my_components
+# -- Compiling entity integer_divider
+# -- Compiling architecture Behaviour of integer_divider
+# ** Warning: D:/altera/13.0sp1/final_project/integer_divider.vhd(69): (vcom-1074) Non-locally static OTHERS choice is allowed only if it is the only choice of the only association.
+# 
+# ** Warning: D:/altera/13.0sp1/final_project/integer_divider.vhd(76): Cannot associate port "Q" of mode OUT with port "R" of mode BUFFER.
+# ** Warning: D:/altera/13.0sp1/final_project/integer_divider.vhd(78): Cannot associate port "Q" of mode OUT with port "Q" of mode BUFFER.
+# 
+add wave -r /*
+run 160000

@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\altera\13.0sp1\final_project\simulation\qsim
+vis_zero
+Z1 !s100 O_Sb3o62SRUb2zX]Ud_;b2
+Z2 IR:2`ahIW<:ah^4TiV^0gD1
+Z3 VC_;Z=7Mm^]GS8c8EO3l[d1
+Z4 dD:\altera\13.0sp1\final_project\simulation\qsim
+Z5 w1745168782
+Z6 8integer_divider.vo
+Z7 Finteger_divider.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|integer_divider.vo|
+Z10 o-work work -O0
+!i10b 1
+!s85 0
+Z11 !s108 1745168783.288000
+Z12 !s107 integer_divider.vo|
+!s101 -O0
+vis_zero_vlg_check_tst
+!i10b 1
+!s100 m^O^A]kFE54l2^Bk:3C?83
+IO`jRF0L::jMMNU6]T5YF01
+Z13 VDA5U^66EDYlfRC=k`J91P1
+R4
+R5
+Z14 8integer_divider.vt
+Z15 Finteger_divider.vt
+L0 57
+R8
+r1
+!s85 0
+31
+Z16 !s108 1745168783.358000
+Z17 !s107 integer_divider.vt|
+Z18 !s90 -work|work|integer_divider.vt|
+!s101 -O0
+R10
+vis_zero_vlg_sample_tst
+!i10b 1
+Z19 !s100 5f7>LU8D=91D40:5WSa[22
+Z20 I7I@E5g<aHVQD@kRI8hiHl3
+Z21 Vjj0N5fQ@g``8Xe64OYo@J2
+R4
+R5
+R14
+R15
+L0 29
+R8
+r1
+!s85 0
+31
+R16
+R17
+R18
+!s101 -O0
+R10
+vis_zero_vlg_vec_tst
+!i10b 1
+!s100 ?S]K62AQnGPD5NlPV576?3
+IlCKR7U?[DWN;?3o;7KC[A0
+Z22 Vg=[S1m?XIcjH6;?91km0h3
+R4
+R5
+R14
+R15
+Z23 L0 152
+R8
+r1
+!s85 0
+31
+R16
+R17
+R18
+!s101 -O0
+R10

@@ -1,0 +1,26 @@
+-- Author(s): 6538020621 Kanisorn Sangchai
+--				  6538177521 Wongsakorn Adirekkitikun
+-- Date: 20 April 2025
+-- Description: 2147307 Final Project
+-- VHDL code containing all components
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+PACKAGE my_components IS
+	COMPONENT regne
+		GENERIC (N: INTEGER := 4);
+		PORT (R			: IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+				Resetn	: IN STD_LOGIC;
+				E, Clock	: IN STD_LOGIC;
+				Q			: OUT STD_LOGIC_VECTOR(N-1 DOWNTO 0));
+	END COMPONENT regne;
+	
+	COMPONENT mux
+		GENERIC (N: INTEGER := 4);
+		PORT (SEL	: IN STD_LOGIC;
+				D0		: IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+				D1		: IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+				X		: OUT STD_LOGIC_VECTOR(N-1 DOWNTO 0));
+	END COMPONENT mux;
+END PACKAGE my_components;

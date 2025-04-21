@@ -52,8 +52,8 @@ ARCHITECTURE Behaviour OF integer_divider IS
 			Rsel <= '0'; Qsel <= '0'; ER <= '0'; EQ <= '0'; Done <= '0';
 			CASE y IS
 				WHEN S0 =>
-					Rsel <= '0'; Qsel <= '0'; ER <= '1'; EQ <= '1'; Err <= '0'; Done <= '0';
-					IF (s = '1' AND z = '1') THEN Err <= '1'; END IF;
+					Rsel <= '0'; Qsel <= '0'; ER <= '1'; EQ <= '1'; Done <= '0';
+					IF (s = '1' AND z = '1') THEN Err <= '1'; ELSE Err <= '0'; END IF;
 				WHEN S1 =>
 					Rsel <= '1'; Qsel <= '1'; ER <= '0'; EQ <= '0';
 					IF (RgtB = '1') THEN 

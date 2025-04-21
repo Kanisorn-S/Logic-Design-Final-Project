@@ -47,9 +47,9 @@ ARCHITECTURE Behaviour OF integer_divider IS
 			END IF;
 		END PROCESS;
 		
-		FSM_outputs: PROCESS(y, s, z)
+		FSM_outputs: PROCESS(y, s, z, RgtB)
 		BEGIN
-			Rsel <= '0'; Qsel <= '0'; ER <= '0'; EQ <= '0'; Err <= '0'; Done <= '0';
+			Rsel <= '0'; Qsel <= '0'; ER <= '0'; EQ <= '0'; Done <= '0';
 			CASE y IS
 				WHEN S0 =>
 					Rsel <= '0'; Qsel <= '0'; ER <= '1'; EQ <= '1'; Err <= '0'; Done <= '0';

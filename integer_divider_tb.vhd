@@ -64,6 +64,7 @@ BEGIN
     -- Test 1: 10 / 3
     A <= std_logic_vector(to_unsigned(10, N));
     B <= std_logic_vector(to_unsigned(3, N));
+    WAIT FOR clk_period/2;
     s <= '1';
     WAIT FOR clk_period;
     s <= '0';
@@ -75,6 +76,7 @@ BEGIN
     -- Test 2: 7 / 2
     A <= std_logic_vector(to_unsigned(7, N));
     B <= std_logic_vector(to_unsigned(2, N));
+    WAIT FOR clk_period/2;
     s <= '1';
     WAIT FOR clk_period;
     s <= '0';
@@ -85,6 +87,7 @@ BEGIN
     -- Test 3: Division by zero (expect Err = '1')
     A <= std_logic_vector(to_unsigned(5, N));
     B <= std_logic_vector(to_unsigned(0, N));
+    WAIT FOR clk_period/2;
     s <= '1';
     WAIT FOR clk_period;
     s <= '0';

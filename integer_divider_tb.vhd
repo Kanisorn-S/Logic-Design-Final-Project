@@ -1,65 +1,65 @@
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
-USE ieee.numeric_std.ALL;
+-- Author(s): 6538020621 Kanisorn Sangchai
+--				  6538177521 Wongsakorn Adirekkitikun
+-- Date: 22 April 2025
+-- Description: 2147307 Final Project
+-- VHDL code for testbench of integer divider 
+LIBRARY ieee; -- Specify the use of ieee library
+USE ieee.std_logic_1164.ALL; -- Specify the use of standard 1164 logic component 
+USE ieee.numeric_std.ALL; -- Specify the use of standard numeric component 
 
-ENTITY divider_tb IS
-END ENTITY;
+ENTITY divider_tb IS -- Declare the entity to represent the Testbench
+END ENTITY; -- End entity declaration
 
-ARCHITECTURE Behavior OF divider_tb IS
+ARCHITECTURE Behavior OF divider_tb IS -- Declare the architecture that is binded to the divider_tb entity
 
   -- Constants
-  CONSTANT N : INTEGER := 8;
+  CONSTANT N : INTEGER := 8; -- Define a constant N to represent the size of the input/output vector, set to 8
 
-  -- DUT Signals
-  SIGNAL Clock   	: STD_LOGIC := '0';
-  SIGNAL Resetn  	: STD_LOGIC := '1';
-  SIGNAL s     	: STD_LOGIC := '0';
-  SIGNAL A     	: STD_LOGIC_VECTOR(N-1 DOWNTO 0) := (OTHERS => '0');
-  SIGNAL B     	: STD_LOGIC_VECTOR(N-1 DOWNTO 0) := (OTHERS => '0');
-  SIGNAL Q     	: STD_LOGIC_VECTOR(N-1 DOWNTO 0);
-  SIGNAL R     	: STD_LOGIC_VECTOR(N-1 DOWNTO 0);
-  SIGNAL EA, EB	: STD_LOGIC := '1';
-  SIGNAL Done  	: STD_LOGIC;
-  SIGNAL Err   	: STD_LOGIC;
+  -- Signals to use with integer divider 
+  SIGNAL Clock   	: STD_LOGIC := '0'; -- Clock signal of type STD_LOGIC, initial value '0'
+  SIGNAL Resetn  	: STD_LOGIC := '1'; -- Resetn signal of type STD_LOGIC, initial value '1'
+  SIGNAL s     	: STD_LOGIC := '0'; -- s (Start) signal of type STD_LOGIC, initial value '0'
+  SIGNAL A     	: STD_LOGIC_VECTOR(N-1 DOWNTO 0) := (OTHERS => '0'); -- A signal of type n-bit STD_LOGIC_VECTOR
+  SIGNAL B     	: STD_LOGIC_VECTOR(N-1 DOWNTO 0) := (OTHERS => '0'); -- B signal of type n-bit STD_LOGIC_VECTOR
+  SIGNAL Q     	: STD_LOGIC_VECTOR(N-1 DOWNTO 0); -- Q signal of type n-bit STD_LOGIC_VECTOR
+  SIGNAL R     	: STD_LOGIC_VECTOR(N-1 DOWNTO 0); -- R signal of type n-bit STD_LOGIC_VECTOR
+  SIGNAL EA, EB	: STD_LOGIC := '1'; -- EA, EB signals of type STD_LOGIC, initial value '1'
+  SIGNAL Done  	: STD_LOGIC; -- Done signal of type STD_LOGIC
+  SIGNAL Err   	: STD_LOGIC; -- Err signal of type STD_LOGIC
 
   -- Clock period definition
-  CONSTANT clk_period : TIME := 10 ns;
-  
-  -- Helper signal
-  SIGNAL Passed : INTEGER := 0;
-  SIGNAL Failed : INTEGER := 0;
+  CONSTANT clk_period : TIME := 10 ns; -- Define a constant clk_period to represent the period of the clock in ns
 
-BEGIN
+BEGIN -- Start the logic of the architecture
 
   -- Clock process
-  clock_process : PROCESS
-  BEGIN
-    Clock <= '0';
-    WAIT FOR clk_period/2;
-    Clock <= '1';
-    WAIT FOR clk_period/2;
-  END PROCESS;
+  clock_process : PROCESS -- Clock signal process definitions
+  BEGIN -- Begin the clock process 
+    Clock <= '0'; -- Begin with teh Clock LOW
+    WAIT FOR clk_period/2; -- Hold the Clock LOW for half of the clock period
+    Clock <= '1'; -- Set the clock signal to HIGH
+    WAIT FOR clk_period/2; -- Hold the clock HIGH for the second half off the clock period 
+  END PROCESS; -- End the clock process 
 
-  -- Instantiate the Unit Under Test (UUT)
-  uut: ENTITY work.integer_divider
-    GENERIC MAP (N => N)
-    PORT MAP (
-      Clock  => Clock,
-      Resetn   => Resetn,
-		EA => EA,
-		EB => EB,
-      s     => s,
-      A     => A,
-      B     => B,
-      R     => R,
-		Q     => Q,
-		Err   => Err,
-      Done  => Done
+  uut: ENTITY work.integer_divider -- Instantiate the Unit Under Test (UUT)
+    GENERIC MAP (N => N) -- Set the generic N of the integer divider to be equal to the constant N
+    PORT MAP ( -- Map the signals of the tb architecture to the inputs/outputs of the integer divider component
+      Clock  => Clock, -- Map the Clock signal to the Clock signal 
+      Resetn   => Resetn, -- Map the Resetn signal to the Resetn signal
+		EA => EA, -- Map the EA signal to the EA signal
+		EB => EB, -- Map the EB signal to the EB signal
+      s     => s, -- Map the s signal to the s signal
+      A     => A, -- Map the A signal to the A signal
+      B     => B, -- Map the B signal to the B signal
+      R     => R, -- Map the R signal to the R signal
+		Q     => Q, -- Map the Q signal to the Q signal
+		Err   => Err, -- Map the Err signal to the Err signal
+      Done  => Done -- Map the Done signal to the Done signal
     );
 
   -- Stimulus process
-  stim_proc: PROCESS
-  BEGIN
+  stim_proc: PROCESS -- Stimulus process definitions
+  BEGIN -- Begin the stimulus process 
     -- Reset
     Resetn <= '0';
     WAIT FOR clk_period;

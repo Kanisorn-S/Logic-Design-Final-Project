@@ -1,4 +1,3 @@
--- full adder 
 -- Author(s): 6538020621 Kanisorn Sangchai
 --				  6538177521 Wongsakorn Adirekkitikun
 -- Date: 20 April 2025
@@ -21,4 +20,4 @@ ARCHITECTURE LogicFunc OF full_adder IS -- Declare the architecture that is bind
 BEGIN -- Begin the architecture of the full adder
   s <= x XOR y XOR Cin; -- Expression for the sum of x, y 
   Cout <= (x AND y) OR (Cin AND x) OR (Cin AND y); -- Expression for the Carry-out from x + y
-END ARCHITECTURE LogicFunc; l-- End the logic of the Behaviour architecture which is the logic for a full adder
+END ARCHITECTURE LogicFunc; -- End the logic of the Behaviour architecture which is the logic for a full adder

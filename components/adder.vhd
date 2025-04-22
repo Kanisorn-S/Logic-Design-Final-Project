@@ -1,4 +1,3 @@
--- adder
 -- Author(s): 6538020621 Kanisorn Sangchai
 --				  6538177521 Wongsakorn Adirekkitikun
 -- Date: 20 April 2025
@@ -9,7 +8,7 @@ LIBRARY ieee; -- Specify the use of ieee library
 USE ieee.std_logic_1164.all; -- Specify the use of standard 1164 logic component
 
 ENTITY adder IS -- Declare the entity to represent an n-bit ripple carry adder
-  GENERIC (N: INTEGER := 4);
+  GENERIC (N: INTEGER := 4); -- Declare a generic N for the size of the input/output vector, set the default value to 4
   PORT ( -- Specify the input and output of the adder and their data types
 		  Cin     : IN STD_LOGIC; -- Carry-in is an input of type STD_LOGIC
         A       : IN STD_LOGIC_VECTOR(N-1 DOWNTO 0); -- A is an input of type n-bit STD_LOGIC_VECTOR 

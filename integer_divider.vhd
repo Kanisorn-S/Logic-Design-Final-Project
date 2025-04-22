@@ -62,10 +62,13 @@ ARCHITECTURE Behaviour OF integer_divider IS -- Declare the architecture that is
 						EQ <= '1'; -- Enable RegQ to load 0 into Q
 					END IF; -- End condition check for Mealy outputs 
 				WHEN S1 => -- Case when current state is S1
-					Rsel <= '1'; Qsel <= '1'; ER <= '0'; EQ <= '0'; -- Set the value for the Moore outputs at S1
+					Rsel <= '1'; Qsel <= '1'; -- Set the value for the Moore outputs at S1
 					IF (RgtB = '1') THEN -- Check conditions for Mealy outputs, if RgtB is '1'
 						ER <= '1'; -- Enable RegR to load R - B into R
 						EQ <= '1'; -- Enable RegQ to load Q + 1 into Q
+					ELSE -- Check conditions for Mealy outputs, if RgtB is '0'
+						ER <= '0'; -- Disable RegR 
+						EQ <= '0'; -- Disable RegQ 
 					END IF; -- End condition check for Mealy outputs 
 				WHEN S2 => -- Case when current state is S2
 					Done <= '1'; -- Set the value for the Moore outputs at S2

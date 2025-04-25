@@ -23,7 +23,7 @@ ARCHITECTURE Behavior OF divider_tb IS -- Declare the architecture that is binde
   SIGNAL B     	: STD_LOGIC_VECTOR(N-1 DOWNTO 0) := (OTHERS => '0'); -- B signal of type n-bit STD_LOGIC_VECTOR
   SIGNAL Q     	: STD_LOGIC_VECTOR(N-1 DOWNTO 0); -- Q signal of type n-bit STD_LOGIC_VECTOR
   SIGNAL R     	: STD_LOGIC_VECTOR(N-1 DOWNTO 0); -- R signal of type n-bit STD_LOGIC_VECTOR
-  SIGNAL EA, EB	: STD_LOGIC := '1'; -- EA, EB signals of type STD_LOGIC, initial value '1'
+  -- SIGNAL EA, EB	: STD_LOGIC := '1'; -- EA, EB signals of type STD_LOGIC, initial value '1'
   SIGNAL Done  	: STD_LOGIC; -- Done signal of type STD_LOGIC
   SIGNAL Err   	: STD_LOGIC; -- Err signal of type STD_LOGIC
 
@@ -46,11 +46,11 @@ BEGIN -- Start the logic of the architecture
     PORT MAP ( -- Map the signals of the tb architecture to the inputs/outputs of the integer divider component
       Clock  => Clock, -- Map the Clock signal to the Clock signal 
       Resetn   => Resetn, -- Map the Resetn signal to the Resetn signal
-		EA => EA, -- Map the EA signal to the EA signal
-		EB => EB, -- Map the EB signal to the EB signal
+		-- EA => EA, -- Map the EA signal to the EA signal
+		-- EB => EB, -- Map the EB signal to the EB signal
       s     => s, -- Map the s signal to the s signal
       A     => A, -- Map the A signal to the A signal
-      B     => B, -- Map the B signal to the B signal
+      B     => B, -- Map the B signal to th    WAIT; -- Wait indefinitely to finish the simulation
       R     => R, -- Map the R signal to the R signal
 		Q     => Q, -- Map the Q signal to the Q signal
 		Err   => Err, -- Map the Err signal to the Err signal
@@ -61,76 +61,85 @@ BEGIN -- Start the logic of the architecture
   stim_proc: PROCESS -- Stimulus process definitions
   BEGIN -- Begin the stimulus process 
     -- Reset
-    Resetn <= '0';
-    WAIT FOR clk_period;
-    Resetn <= '1';
+    Resetn <= '0'; -- Pull Resetn LOW to Reset the integer divider 
+    WAIT FOR clk_period; -- Wait for a clock period 
+    Resetn <= '1'; -- Pull Resetn HIGH to allow the integer divider to function properly
 
     -- Test 1: Normal Case: (A = 10, B = 2) -> Q = 5, R = 0
-    A <= std_logic_vector(to_unsigned(10, N));
-    B <= std_logic_vector(to_unsigned(2, N));
-    WAIT FOR clk_period;
-    s <= '1';
+    A <= std_logic_vector(to_unsigned(10, N)); -- Set A to an unsigned N-bit vector with value 10
+    B <= std_logic_vector(to_unsigned(2, N)); -- Set B to an unsigned N-bit vector with value 2
+    WAIT FOR clk_period; -- Wait for a clock period 
+    s <= '1'; -- Start the integer divider process by setting the start signal (s) HIGH 
 	 -- Wait for completion
-    WAIT UNTIL Done'EVENT;
+    WAIT UNTIL Done'EVENT; -- Wait until signal Done changes value
+	 -- Check if quotient Q is 5 or not, REPORT the result
 	 IF Q /= "00000101" THEN REPORT "[X]Test case 1 failed: Incorrect Quotient" SEVERITY error; ELSE REPORT "[O]Test case 1 passed: Correct Quotient"; END IF;
+	 -- Check if remainder R is 0 or not, REPORT the result 
 	 IF R /= "00000000" THEN REPORT "[X]Test case 1 failed: Incorrect Remainder" SEVERITY error; ELSE REPORT "[O]Test case 1 passed: Correct Remainder"; END IF;
-    WAIT FOR clk_period;
-    s <= '0';
+    WAIT FOR clk_period; -- Wait for a clock period 
+    s <= '0'; -- Set start signal (s) LOW to reset the integer divider back to state S0 and prepare for next test case 
 
 
 
     -- Test 2: Edge Case: (A = 1, B = 2) -> Q = 0, R = 1 (B > A)
-    A <= std_logic_vector(to_unsigned(1, N));
-    B <= std_logic_vector(to_unsigned(2, N));
-    WAIT FOR clk_period;
-    s <= '1';
-    WAIT UNTIL Done'EVENT;
+    A <= std_logic_vector(to_unsigned(1, N)); -- Set A to an unsigned N-bit vector with value 1
+    B <= std_logic_vector(to_unsigned(2, N)); -- Set B to an unsigned N-bit vector with value 2
+    WAIT FOR clk_period; -- Wait for a clock period 
+    s <= '1'; -- Start the integer divider process by setting the start signal (s) HIGH 
+	 -- Wait for completion
+    WAIT UNTIL Done'EVENT; -- Wait until signal Done changes value
+	 -- Check if quotient Q is 5 or not, REPORT the result
 	 IF Q /= "00000000" THEN REPORT "[X]Test case 2 failed: Incorrect Quotient" SEVERITY error; ELSE REPORT "[O]Test case 2 passed: Correct Quotient"; END IF;
+	 -- Check if remainder R is 0 or not, REPORT the result 
 	 IF R /= "00000001" THEN REPORT "[X]Test case 2 failed: Incorrect Remainder" SEVERITY error; ELSE REPORT "[O]Test case 2 passed: Correct Remainder"; END IF;
-    WAIT FOR clk_period;
-    s <= '0';
-
+    WAIT FOR clk_period; -- Wait for a clock period 
+    s <= '0'; -- Set start signal (s) LOW to reset the integer divider back to state S0 and prepare for next test case 
 
 
     -- Test 3: Error Case: (A = 7, B = 0) -> Err = 1 (Invalid: Division by Zero)
-    A <= std_logic_vector(to_unsigned(7, N));
-    B <= std_logic_vector(to_unsigned(0, N));
-    WAIT FOR clk_period;
-    s <= '1';
-	 WAIT UNTIL Done'EVENT;
+    A <= std_logic_vector(to_unsigned(7, N)); -- Set A to an unsigned N-bit vector with value 7
+    B <= std_logic_vector(to_unsigned(0, N)); -- Set B to an unsigned N-bit vector with value 0
+    WAIT FOR clk_period; -- Wait for a clock period
+    s <= '1'; -- Start the integer divider process by setting the start signal (s) HIGH
+	 WAIT UNTIL Done'EVENT; -- Wait until signal Done changes value
+   -- Check if Error Err is 1 or not, REPORT the result
 	 IF Err /= '1' THEN REPORT "[X]Test case 3 failed: Incorrect Error signal" SEVERITY error; ELSE REPORT "[O]Test case 3 passed: Correct Error signal"; END IF; 
-    WAIT FOR clk_period;
-    s <= '0';
+    WAIT FOR clk_period; -- Wait for a clock period
+    s <= '0'; -- Set start signal (s) LOW to reset the integer divider back to state S0 and prepare for next test case
 
 
 	 
 	 -- Test 4: Large Number Case: (A = 255, B = 16) -> Q = 15, R = 15
-    A <= std_logic_vector(to_unsigned(255, N));
-    B <= std_logic_vector(to_unsigned(16, N));
-    WAIT FOR clk_period;
-    s <= '1';
-    WAIT UNTIL Done'EVENT;
+    A <= std_logic_vector(to_unsigned(255, N)); -- Set A to an unsigned N-bit vector with value 255
+    B <= std_logic_vector(to_unsigned(16, N)); -- Set A to an unsigned N-bit vector with value 16
+    WAIT FOR clk_period; -- Wait for a clock period
+    s <= '1'; -- Start the integer divider process by setting the start signal (s) HIGH
+    WAIT UNTIL Done'EVENT; -- Wait until signal Done changes value
+    -- Check if quotient Q is 15 or not, REPORT the result
 	 IF Q /= "00001111" THEN REPORT "[X]Test case 4 failed: Incorrect Quotient" SEVERITY error; ELSE REPORT "[O]Test case 4 passed: Correct Quotient"; END IF;
+   -- Check if remainder R is 15 or not, REPORT the result
 	 IF R /= "00001111" THEN REPORT "[X]Test case 4 failed: Incorrect Remainder" SEVERITY error; ELSE REPORT "[O]Test case 4 passed: Correct Remainder"; END IF;
-    WAIT FOR clk_period;
-    s <= '0';
+    WAIT FOR clk_period; -- Wait for a clock period
+    s <= '0'; -- Set start signal (s) LOW to reset the integer divider back to state S0 and prepare for next test case
 
 
 
 	 -- Test 5: Arbitrary Case: (A = 37, B = 5) -> Q = 7, R = 2
-    A <= std_logic_vector(to_unsigned(37, N));
-    B <= std_logic_vector(to_unsigned(5, N));
-    WAIT FOR clk_period;
-    s <= '1';
-    WAIT UNTIL Done'EVENT;
+    A <= std_logic_vector(to_unsigned(37, N)); -- Set A to an unsigned N-bit vector with value 37
+    B <= std_logic_vector(to_unsigned(5, N)); -- Set B to an unsigned N-bit vector with value 5
+    WAIT FOR clk_period; -- Wait for a clock period
+    s <= '1'; --  Start the integer divider process by setting the start signal (s) HIGH
+    WAIT UNTIL Done'EVENT; -- Wait until signal Done changes value
+    -- Check if quotient Q is 7 or not, REPORT the result
 	 IF Q /= "00000111" THEN REPORT "[X]Test case 5 failed: Incorrect Quotient" SEVERITY error; ELSE REPORT "[O]Test case 5 passed: Correct Quotient"; END IF;
+   -- Check if remainder R is 2 or not, REPORT the result
 	 IF R /= "00000010" THEN REPORT "[X]Test case 5 failed: Incorrect Remainder" SEVERITY error; ELSE REPORT "[O]Test case 5 passed: Correct Remainder"; END IF;
-    WAIT FOR clk_period;
-    s <= '0';
+    WAIT FOR clk_period; -- Wait for a clock period
+    s <= '0'; -- Set start signal (s) LOW to reset the integer divider back to state S0 
 
 
     -- Finish simulation
-    WAIT;
-  END PROCESS;
+    WAIT; -- Wait indefinitely to finish the simulation
+  END PROCESS; -- End the stimulus process
 
-END ARCHITECTURE Behavior;
+END ARCHITECTURE Behavior; -- End the architecture declaration

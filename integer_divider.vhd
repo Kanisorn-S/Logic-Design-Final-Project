@@ -13,7 +13,7 @@ ENTITY integer_divider IS -- Declare the entity to represent an n-bit integer di
 	PORT ( -- Specify the input and output of the integer divider and their data types
 			Clock 	: IN STD_LOGIC; -- Clock is an input of type STD_LOGIC
 			Resetn	: IN STD_LOGIC; -- Resetn is an input of type STD_LOGIC 
-			EA,EB, s	: IN STD_LOGIC; -- EA, EB, s (start) are inputs of type STD_LOGIC
+			s			: IN STD_LOGIC; -- EA, EB, s (start) are inputs of type STD_LOGIC
 			A			: IN STD_LOGIC_VECTOR(N-1 DOWNTO 0); -- A is an input of type n-bit STD_LOGIC_VECTOR representing the dividend
 			B			: IN STD_LOGIC_VECTOR(N-1 DOWNTO 0); -- B is an input of type n-bit STD_LOGIC_VECTOR representing the divisor
 			R			: BUFFER STD_LOGIC_VECTOR(N-1 DOWNTO 0); -- R is an output of type n-bit STD_LOGIC_VECTOR representing the remainder from A/B
@@ -66,9 +66,9 @@ ARCHITECTURE Behaviour OF integer_divider IS -- Declare the architecture that is
 					IF (RgtB = '1') THEN -- Check conditions for Mealy outputs, if RgtB is '1'
 						ER <= '1'; -- Enable RegR to load R - B into R
 						EQ <= '1'; -- Enable RegQ to load Q + 1 into Q
-					ELSE -- Check conditions for Mealy outputs, if RgtB is '0'
-						ER <= '0'; -- Disable RegR 
-						EQ <= '0'; -- Disable RegQ 
+					ELSE
+						ER <= '0';
+						EQ <= '0';
 					END IF; -- End condition check for Mealy outputs 
 				WHEN S2 => -- Case when current state is S2
 					Done <= '1'; -- Set the value for the Moore outputs at S2
